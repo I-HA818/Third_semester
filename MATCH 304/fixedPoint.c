@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+#define EPS 10.0e-6
+#define F(x)(x*x*x+4*x*x-10)
+#define G(x)((10-x*x*x)/4)
+int main(){
+    int n,i;
+    n=100;
+   // printf("%lf",EPS);
+    double x0=1.5,c,x1;
+    //if(F(first)*F(last)>0) exit(0);
+    printf(" Iter     x0            x1               G(x0)          F(x1)\n");
+    printf("--------------------------------------------\n");
+
+    for(i=1;i<n;i++){
+        x1=sqrt(G(x0));
+        printf("%d    %lf        %lf     %lf    %lf\n",i,x0,x1,F(x0),F(x1));
+        if(fabs(F(x1))<EPS){
+            printf("Root=%lf\n",x1);
+            exit(0);
+        }
+        //if(F(first)*F(c)>0) first=c;
+        else {
+            x0=x1;
+            
+        };
+    }
+ return 0;
+}
