@@ -18,7 +18,7 @@ int main(){
 	}
 	printf("Number of characters in your language-");
 	scanf("%d",&c);
-	int digits[c];	
+	int digits[c];
 	printf("Enter characters-");
 	for(int i=0;i<c;i++)
 		scanf("%d",&digits[i]);
@@ -35,11 +35,11 @@ int main(){
 				if(arr[k]==input){
 				  transition[i][j]=k;
 				  break;
-				}  
+				}
 			}
 		}
 	}
-	
+
 	printf("Enter starting state-");
 	scanf(" %c",&input);
 	getchar();
@@ -48,7 +48,7 @@ int main(){
 		  s=k;
 		  break;
 	    }
-	
+
 	printf("Enter accepting state-");
 	scanf(" %c",&input);
 	getchar();
@@ -58,29 +58,29 @@ int main(){
 		  break;
 	    }
 	bool accepting[n];
-	
+
 	for(int i=0;i<n;i++)
 	   accepting[i]=false;
 	accepting[a]=true;
 	char table[n][n];
-	
+
 	for(int i=0;i<n;i++)
 	   for(int j=0;j<n;j++)
 	     table[i][j]='n';
-	
-	     
-	     
+
+
+
 	for(int i=0;i<n;i++){
 		if(i==a){
-		  for(int j=0;j<n;j++){ 
+		  for(int j=0;j<n;j++){
 		   table[i][j]='X';
 		   table[j][i]='X';
-		  }   
+		  }
 		}
 		else{
 		 for(int j=i+1;j<n;j++){
 		   if(table[i][j]=='n'){
-		    for(int l=0;l<c;l++){	
+		    for(int l=0;l<c;l++){
 		    	if(transition[i][l]==a || transition[j][l]==a){
 		    	   if(transition[i][l]==a && transition[j][l]==a){
 		    		table[i][j]='=';
@@ -92,8 +92,8 @@ int main(){
 		    		table[j][i]='X';
 		    		break;
 		  	   }
-		  	}	   
-		    }	
+		  	}
+		    }
 		   if(table[i][j]=='n'){
 		      bool flag=true;
 		      for(int l=0;l<c;l++){
@@ -106,31 +106,53 @@ int main(){
 		      	     }
 		      	    if(flag==false)
 		      	       break;
-		      } 	         
+		      }
 		      if(flag==true){
 			   table[i][j]='=';
 		    	   table[j][i]='=';
 		      }
 		   }
-		  }     
+		  }
 		 }
-	       }   
-	} 
+        }
+	}
+
+
 	for(int i=0;i<n;i++)
-	   table[i][i]='=';  
+	   table[i][i]='=';
 	cout <<"  ";
 	for(int i=0;i<n;i++)
 	  cout << arr[i] <<" ";
-	cout <<endl;  
-	   
+	cout <<endl;
+
 	for(int i=0;i<n;i++){
 	  cout << arr[i] << " ";
 	   for(int j=0;j<=i;j++)
 	     cout << table[i][j] << " ";
 	   cout <<endl;
-	}     	 
+	}
 
-	
+
+
+cout << "TRANSITION TABLE" << endl;
+cout<< "states" << " " << "0  "<< "1"<< endl;
+	for(int i=0;i<n;i++){
+            bool equivalent=false;
+        for(int j=0;j<i;j++){
+            if(table[i][j]=='=') {
+                equivalent = true;
+                break;
+            }
+        }
+        if (equivalent == false){
+                 cout << arr[i] <<"      " ;
+            for(int k=0;k<c;k++){
+                cout << arr[transition[i][k]]<< "  ";
+            }
+     cout << endl;
+        }
+
+	}
 
 	}
 
