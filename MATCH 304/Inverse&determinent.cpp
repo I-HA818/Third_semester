@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 #define SIZE 100
 double Mat[SIZE][SIZE];
@@ -42,17 +41,18 @@ void determinent(int n){
 
 
 	}
-    for(int i=0;i<n;i++){
-	   for(int j=0;j<n;j++)
-	     cout << Mat[i][j]<<" ";
-	   cout << endl;
-	}
+    cout << "lower triangle 0 :"<< endl;
+     for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++)
+                cout << Mat[i][j] << " ";
+            cout << endl;
+        }
     determinent=1;
     for(i=0;i<n;i++)
             determinent*=Mat[i][i];
 
 
-     cout << "Deterinent is " << determinent << endl;
+     cout << "Determinent is " << determinent << endl;
 }
 
 void inverse(int n){
@@ -60,8 +60,8 @@ void inverse(int n){
         double pivot=Mat[i][i];
         if(pivot!=1)
         for(int j=0;j<n;j++){
-            Mat[i][j]/pivot;
-            Mat2[i][j]/pivot;
+            Mat[i][j]/=pivot;
+            Mat2[i][j]/=pivot;
         }
     }
 
@@ -89,6 +89,12 @@ void inverse(int n){
             }
         }
     }
+
+    for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++)
+                cout << Mat[i][j] << " ";
+            cout << endl;
+        }
         cout <<"inverse matrix " <<endl;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++)
@@ -116,4 +122,3 @@ int main()
 
     return 0;
 }
-

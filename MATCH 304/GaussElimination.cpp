@@ -39,7 +39,7 @@ void gauss(int n){
                     if(Mat[j][i]!=0){
                         double swap=Mat[j][i];
                         Mat[j][i]=Mat[i][i];
-                        Mat[i][i]=Mat[j][i];
+                        Mat[i][i]=swap;
                     }
                 }
             }
@@ -55,11 +55,10 @@ void gauss(int n){
             }
         }
 
+    cout << "Solutions are:  " ;
     for(i=0;i<n;i++){
-        for(j=0;j<=n;j++){
-            cout << Mat[i][j] << " ";
-        }
-        cout << endl;
+            cout << Mat[i][n] << " ";
+
     }
 }
 int main()
