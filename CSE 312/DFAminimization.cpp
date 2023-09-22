@@ -135,24 +135,33 @@ int main(){
 
 
 cout << "TRANSITION TABLE" << endl;
-cout<< "states" << " " << "0  "<< "1"<< endl;
-	for(int i=0;i<n;i++){
-            bool equivalent=false;
-        for(int j=0;j<i;j++){
-            if(table[i][j]=='=') {
-                equivalent = true;
-                break;
-            }
-        }
-        if (equivalent == false){
-                 cout << arr[i] <<"      " ;
-            for(int k=0;k<c;k++){
-                cout << arr[transition[i][k]]<< "  ";
-            }
-     cout << endl;
-        }
+cout<< "states" << " " << "0   "<< "1"<< endl;
+	bool equivalent[n];
+	for(int i=0;i<n;i++)
+	   equivalent[i]=false;
 
-	}
+	for(int i=0;i<n;i++)
+	   for(int j=0;j<i;j++)
+	      if(table[i][j]=='=')
+	         equivalent[i]=true;
+
+	for(int i=0;i<n;i++)
+	    if(!equivalent[i]){
+	   	cout <<arr[i] <<"      ";
+	   	for(int j=0;j<c;j++){
+	   	    if(equivalent[transition[i][j]]){
+	   	       for(int k=0;k<n;i++)
+	   	          if(table[transition[i][j]][k]=='=' && transition[i][j]!=k){
+	   	    		cout << arr[k]<<"    ";
+	   	    		break;
+	   	    	  }
+	   	    }
+	   	    else
+	   	    	 cout <<arr[transition[i][j]]<<"    ";
+	   	}
+	   	cout << endl;
+	    }
+
 
 	}
 
