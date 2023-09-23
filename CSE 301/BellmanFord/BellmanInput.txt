@@ -1,0 +1,11 @@
+5
+s r x y z
+8
+y z 5
+y r 1
+x y -3
+r x 2
+r y 2
+r z 3
+s r -1
+s z 4
