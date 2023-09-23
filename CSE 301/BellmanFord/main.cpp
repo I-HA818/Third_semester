@@ -35,17 +35,7 @@ void initialize(int *distance, int *previ,int source){
 	}
 	distance[source]=0;
 }
-int extract_min(int *distance){
-	int min =INT_MAX,in;
-	for(int i=0;i<V;i++){
-		if(min>=distance[i]&& visit[i] == false)
-			{
-				min=distance[i];
-				in=i;
-			}
-	}
-	return in;
-}
+
 void relax(int *distance,int *previ,int u , int v){
 	if(distance[v]> distance[u]+graph[u][v]){
 		distance[v]=distance[u]+graph[u][v];
@@ -92,7 +82,7 @@ int main(){
     readInput();
     cin>>source;
     ans=bellman(distance,previ,source);
-    if(ans==true) cout << "no negetive cycle" << endl;
+    if(ans==true) cout << "No negetive cycle" << endl;
     else  cout<< "Negetive cycle present "<<endl;
 
     cout<<"Shortest path from "<< name[source]<<endl;
