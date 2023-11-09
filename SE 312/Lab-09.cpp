@@ -4,6 +4,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 vector<string> output;
+bool isOK(string input){
+for(int i=0;i<input.size();i++){
+	if(input[i]!='0' && input[i]!='1') return false;
+}
+	return true;
+}
 bool isPalindrome(string& str) {
     int left = 0;
     int right = str.length() - 1;
@@ -60,7 +66,8 @@ int main() {
     cin >> input;
 
     bool ans= isPalindrome(input);
-    if(ans) {
+    bool OK=isOK(input);
+    if(ans && OK) {
             CFG(input);
              cout<<"P =>";
             for (auto it = output.begin(); it != output.end(); ++it){
